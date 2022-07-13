@@ -33,3 +33,25 @@ var romanToInt = function(s) {
 };
 
 console.log(romanToInt("III"));
+
+let par = 0;
+    let corch = 0;
+    let brack = 0;
+    let lastSign = ''
+    
+    const signValue = {
+        "(": 1,
+        ")":-1,
+        "[": 1,
+        "]":-1,
+        "{": 1,
+        "}":-1,
+    }
+    
+    s.split('').forEach((l) => {
+        if( par < 0 || corch < 0 || brack < 0 ) return false
+        if (l === '(' || l === ')') par = par + signValue[l]
+        if (l === '[' || l === ']') corch = corch + signValue[l]
+        if (l === '{' || l === '}') brack = brack + signValue[l]
+        
+    })
